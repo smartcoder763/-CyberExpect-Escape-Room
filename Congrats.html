@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberExpect Completed</title>
+  <style>
+    body { margin:0; background:black; overflow:hidden; }
+    #matrixCanvas {
+      position:fixed; left:0; top:0; width:100%; height:100%;
+      z-index:1;
+    }
+    #matrixMessage {
+      position:fixed; left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      z-index:2; text-align:center;
+      color:white; font-size:40px; font-weight:800;
+      text-shadow:0 0 20px #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+  <div id="matrixMessage">Congrats!<br>🎉 You completed 🎉<br>CyberExpect — Escape Room </div>
+
+  <script>
+    const canvas=document.getElementById('matrixCanvas');
+    const ctx=canvas.getContext('2d');
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    const letters='~!@#$%^&*()_+0110101*+*+';
+    const fontSize=18; const cols=Math.floor(canvas.width/fontSize);
+    const drops=new Array(cols).fill(0);
+    function draw(){
+      ctx.fillStyle='rgba(0,0,0,0.05)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.font=fontSize+'px monospace';
+      for(let i=0;i<drops.length;i++){
+        const text=letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillStyle=Math.random()<0.05?'#fff':`hsl(${Math.random()*360},100%,50%)`;
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>canvas.height&&Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+    window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+  </script>
+</body>
+</html>

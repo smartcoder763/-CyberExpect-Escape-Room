@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CyberExpect Escape Room</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="Hacker.css">
+</head>
+<body>
+ <!-- Background Particles -->
+  <canvas id="particles"></canvas>
+<div id="welcome-page" class="panel neon-panel">
+  <!-- Glitch Title -->
+  <h1 class="glitch" data-text="🔓 CyberExpect — Escape Room">🔓 CyberExpect — Escape Room</h1>
+  <p class="typewriter">😎Created by Paresh Chavda — BCA question bank.</p>
+  <div class="center-btn">
+    <button id="startBtn" class="pulse-btn">▶ Start Game</button>
+  </div>
+</div>
+
+
+  <div id="game" class="game-container" style="display:none;">
+    <div class="panel clearfix">
+      <div class="scoreboard">
+        <div>Level: <span id="currentLevel">1</span>/8</div>
+        <div>Question: <span id="qIndex">0</span>/<span id="qTotal">0</span></div>
+        <div>Score: <span id="score">0</span></div>
+      </div>
+      <h1>🔐 CyberExpect Escape Room</h1>
+      <div style="text-align:center; margin-top:8px;">
+        Timer: <span id="timer">60</span> sec <span id="hurry">⚠ Hurry Up!!</span>
+      </div>
+    </div>
+
+    <div id="question-panel" class="panel">
+      <h2 id="lvlTitle">Level 1</h2>
+      <div id="msgBox"></div>
+      <div id="questionArea"></div>
+      <div style="margin-top:12px; text-align:center;">
+        <button id="skipBtn">Skip (No score, -5 sec)</button>
+        <button id="submitTextBtn" style="display:none;">Submit Answer</button>
+        <button id="nextBtn" style="display:none;">Next</button>
+      </div>
+    </div>
+
+    <div id="end-panel" class="panel" style="display:none; text-align:center;">
+      <h2 id="endTitle">Congratulations!</h2>
+      <p id="endMsg"></p>
+      <p class="small">Final Score: <span id="finalScore"></span></p>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Game logic loads questions.json via Room_Logic.js -->
+  <script src="Room_Logic.js"></script>
+</body>
+</html>

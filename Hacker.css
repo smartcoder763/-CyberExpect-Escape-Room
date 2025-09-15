@@ -1,0 +1,280 @@
+/* Hacker.css — simple cyberpunk green theme */
+body {
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: #7CFC00;
+  margin:0;
+  padding:20px;
+}
+
+#particles {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  z-index: 0;
+  background: #000; /* dark space theme */
+}
+
+#welcome-page, #game, #end-panel {
+  position: relative;
+  z-index: 1; /* content always on top of particles */
+}
+
+/* Neon Panel */
+.neon-panel {
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff, inset 0 0 20px #0ff;
+  border-radius: 12px;
+}
+
+/* Glitch Text Effect */
+.glitch {
+  position: relative;
+  color: rgb(255, 0, 0);
+  font-size: 2.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #0ff;
+  animation: flicker 4s infinite;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: rgb(255, 0, 0);
+  clip: rect(0, 900px, 0, 0);
+}
+.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+.glitch::after {
+  color: #0f0;
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+}
+@keyframes glitchTop {
+  0% { clip: rect(0,9999px,0,0); }
+  10% { clip: rect(10px,9999px,30px,0); transform: translate(-2px,-2px); }
+  20% { clip: rect(5px,9999px,20px,0); transform: translate(2px,-1px); }
+  100% { clip: rect(0,9999px,0,0); }
+}
+@keyframes glitchBottom {
+  0% { clip: rect(0,9999px,0,0); }
+  10% { clip: rect(40px,9999px,60px,0); transform: translate(2px,2px); }
+  20% { clip: rect(25px,9999px,45px,0); transform: translate(-2px,1px); }
+  100% { clip: rect(0,9999px,0,0); }
+}
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.3; }
+}
+
+/* Typewriter Effect */
+.typewriter {
+  font-size: 16px;
+  color: #aaffff;
+  border-right: 2px solid #aaffff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+  margin-top: 10px;
+  text-align: center;
+}
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Pulse Animated Button */
+.pulse-btn {
+  font-size: 22px;
+  padding: 14px 32px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #00ffcc, #0099ff);
+  color: #000;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff;
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+  border: none;
+}
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #0ff; }
+  50% { transform: scale(1.08); box-shadow: 0 0 25px #0ff; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #0ff; }
+}
+
+.boot-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: left;
+  padding: 20px;
+  font-size: 18px;
+}
+.boot-screen pre {
+  white-space: pre-wrap;
+  animation: blinkCursor 0.8s infinite;
+}
+@keyframes blinkCursor {
+  50% { border-right: 2px solid #0f0; }
+}
+
+.panel {
+  border:2px solid #7CFC00;
+  padding:16px;
+  margin-bottom:18px;
+  background: rgba(0,0,0,0.85);
+  box-shadow:0 0 12px #0f0;
+}
+h1,h2 { text-align:center; }
+.center-btn {
+  text-align: center;
+  margin-top: 30px;
+}
+#startBtn {
+  font-size: 20px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00ff99, #00ccff);
+  color: #000;
+  text-shadow: 0 0 5px #fff;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+#startBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #00ffcc;
+}
+button {
+  padding:10px 16px;
+  font-size:16px;
+  background:#7CFC00;
+  color:#000;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 10px #7CFC00;
+  margin:6px;
+}
+button:hover {
+  background:#000;
+  color:#7CFC00;
+  box-shadow:0 0 20px #7CFC00;
+}
+input[type="text"], input[type="number"], textarea {
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  background:#000;
+  color:#7CFC00;
+  border:2px solid #0f0;
+  margin-top:8px;
+}
+.question { font-size:18px; margin-bottom:12px; }
+.options { margin-top:12px; }
+.option-btn {
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-bottom:8px;
+  padding:10px;
+  background:transparent;
+  border:1px solid #0f0;
+  color:#7CFC00;
+  cursor:pointer;
+}
+.question-box {
+  background: #111;              /* dark background */
+  border: 2px dashed #00ffcc;    /* --- style border */
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #bfffbf;                /* hacker green */
+  white-space: pre-wrap;         /* preserve line breaks */
+  text-align: left;
+}
+
+#questionArea .code {
+  font-size: 22px;   /* bigger font */
+  line-height: 1.5;  /* spacing between lines */
+}
+
+/* Feedback Message Box */
+#msgBox {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 40px;
+}
+
+.score-display {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+  text-align: center;
+}
+
+/* Correct Answer */
+.msg-correct {
+  color: #00ff99;
+  animation: popIn 0.5s ease, glowGreen 1.5s infinite alternate;
+}
+
+/* Wrong Answer */
+.msg-wrong {
+  color: #ff4444;
+  animation: shake 0.4s, glowRed 1.5s infinite alternate;
+}
+
+/* Time Up */
+.msg-time {
+  color: #ffaa00;
+  animation: fadeInOut 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes glowGreen {
+  from { text-shadow: 0 0 5px #00ff99; }
+  to   { text-shadow: 0 0 20px #00ff99; }
+}
+@keyframes glowRed {
+  from { text-shadow: 0 0 5px #ff4444; }
+  to   { text-shadow: 0 0 20px #ff4444; }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.option-btn:hover { background:rgba(124,252,0,0.06); }
+#timer { font-weight:bold; font-size:18px; color:#ff0; display:inline-block; border:2px solid #7CFC00; padding:6px; margin-left:8px; }
+#hurry { color:#ff4d4d; font-weight:bold; display:none; margin-left:10px; }
+.level-complete { font-size:20px; color:gold; animation: blink 1s infinite alternate; display:block; margin-top:12px; text-align:center; }
+@keyframes blink { 0%{opacity:1;} 100%{opacity:0.4;} }
+.small { font-size:14px; color:#aaffaa; }
+pre.code { background:#010; border:1px dashed #0f0; padding:10px; color:#bfffbf; overflow:auto; max-height:240px; }
+.scoreboard { float:right; text-align:right; }
+.clearfix::after{ content:""; display:block; clear:both; }
